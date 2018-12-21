@@ -14,7 +14,19 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('*', (req, res, next) => {
+app.get('/error', (req, res, next) => {
+  log.error('omg');
+  res.sendStatus(400);
+  next();
+});
+
+app.get('/fatal', (req, res, next) => {
+  log.fatal('FATAL: 500');
+  res.sendStatus(500);
+  next();
+});
+
+app.get('/', (req, res, next) => {
   res.sendStatus(200);
   next();
 });

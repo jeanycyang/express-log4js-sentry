@@ -5,13 +5,18 @@ function initLogSettings() {
 
   log4js.configure({
     appenders: {
-      out: {
+      stdout: {
         type: 'stdout',
       },
+      file: {
+        type: 'file',
+        filename: 'error.log',
+      },
+      errorFilter: { type: 'logLevelFilter', level: 'error', appender: 'file' },
     },
     categories: {
       default: {
-        appenders: ['out'],
+        appenders: ['stdout', 'errorFilter'],
         level: 'debug',
       },
     },
