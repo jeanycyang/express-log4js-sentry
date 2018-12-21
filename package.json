@@ -2,8 +2,9 @@
   "name": "express-log4js-sentry",
   "version": "1.0.0",
   "description": "demonstrate how to use sentry as an exception monitor",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
+    "start": "node src/server",
     "test": "mocha"
   },
   "repository": {
@@ -25,5 +26,9 @@
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "log4js": "^3.0.6"
   }
 }
