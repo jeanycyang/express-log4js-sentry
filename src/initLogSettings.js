@@ -12,11 +12,17 @@ function initLogSettings() {
         type: 'file',
         filename: 'error.log',
       },
+      sentry: {
+        type: 'log4js-node-sentry-appender',
+        dns: process.env.SENTRY_DSN,
+        env: 'production',
+      },
       errorFilter: { type: 'logLevelFilter', level: 'error', appender: 'file' },
+      sentryFilter: { type: 'logLevelFilter', level: 'error', appender: 'sentry' },
     },
     categories: {
       default: {
-        appenders: ['stdout', 'errorFilter'],
+        appenders: ['stdout', 'errorFilter', 'sentryFilter'],
         level: 'debug',
       },
     },

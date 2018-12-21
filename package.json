@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "log4js": "^3.0.6"
+    "log4js": "^3.0.6",
+    "log4js-node-sentry-appender": "^1.0.7"
   }
 }
