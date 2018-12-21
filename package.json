@@ -1,0 +1,24 @@
+{
+  "name": "express-log4js-sentry",
+  "version": "1.0.0",
+  "description": "demonstrate how to use sentry as an exception monitor",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeanycyang/express-log4js-sentry.git"
+  },
+  "keywords": [
+    "sentry",
+    "express",
+    "log4js"
+  ],
+  "author": "Jean Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeanycyang/express-log4js-sentry/issues"
+  },
+  "homepage": "https://github.com/jeanycyang/express-log4js-sentry#readme"
+}
