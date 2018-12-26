@@ -25,14 +25,14 @@ app.get('/user-error', (req, res, next) => {
     res.json(json);
   } catch (err) {
     const error = new Error(err.message);
-    error.name = 400;
+    error.status = 400;
     next(error);
   }
 });
 
 app.get('/server-error', (req, res, next) => {
   const error = new Error('some server errors');
-  error.name = 500;
+  error.status = 500;
   next(error);
 });
 
@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 
 app.use((req, res, next) => {
   const error = new Error(`${req.path} not found`);
-  error.name = 404;
+  error.status = 404;
   next(error);
 });
 
@@ -55,10 +55,11 @@ app.use(Sentry.Handlers.errorHandler());
 
 // customized error handler
 app.use((err, req, res, next) => { // eslint-disable-line
-  if (err.name >= 500) {
+  const status = (typeof err.status === 'number' && Number.isInteger(err.status) && err.status >= 100) ? err.status : 500;
+  if (status >= 500) {
     log.error(err);
   }
-  res.status(err.name).json({
+  res.status(status).json({
     message: err.message,
   });
 });
