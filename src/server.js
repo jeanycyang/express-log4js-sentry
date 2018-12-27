@@ -31,6 +31,7 @@ app.get('/user-error', (req, res, next) => {
 });
 
 app.get('/server-error', (req, res, next) => {
+  log.addContext('user', { id: '507f191e810c19729de860ea', username: 'jeanycyang' });
   const error = new Error('some server errors');
   error.status = 500;
   next(error);
@@ -50,8 +51,6 @@ app.use((req, res, next) => {
   error.status = 404;
   next(error);
 });
-
-app.use(Sentry.Handlers.errorHandler());
 
 // customized error handler
 app.use((err, req, res, next) => { // eslint-disable-line

@@ -13,9 +13,11 @@ function initLogSettings() {
         filename: 'error.log',
       },
       sentry: {
-        type: 'log4js-node-sentry-appender',
-        dns: process.env.SENTRY_DSN,
-        env: 'production',
+        type: 'error-sentry-appender',
+        sentryConfig: {
+          dsn: process.env.SENTRY_DSN,
+          environment: process.env.NODE_ENV || 'development',
+        },
       },
       errorFilter: { type: 'logLevelFilter', level: 'error', appender: 'file' },
       sentryFilter: { type: 'logLevelFilter', level: 'error', appender: 'sentry' },

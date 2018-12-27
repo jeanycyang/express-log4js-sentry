@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@sentry/node": "^4.4.2",
+    "error-sentry-appender": "/Users/jeanyang/Documents/log4js-error-sentry-appender",
     "express": "^4.16.4",
-    "log4js": "^3.0.6",
-    "log4js-node-sentry-appender": "^1.0.7"
+    "log4js": "^3.0.6"
   }
 }
