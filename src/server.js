@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => { // eslint-disable-line
   const status = (typeof err.status === 'number' && Number.isInteger(err.status) && err.status >= 100) ? err.status : 500;
   if (status >= 500) {
-    log.error(err);
+    log.error(err, { statusCode: status });
   }
   res.status(status).json({
     message: err.message,
